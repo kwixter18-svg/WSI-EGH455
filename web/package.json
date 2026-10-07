@@ -1,0 +1,12 @@
+{
+    "name": "minecraft-server-manager",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "node web/src/webserver.js"
+    },
+    "dependencies": {
+        "express": "^5.1.0",
+        "ws": "8.22.0"
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "database-handler",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/databaseHandler.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mqtt": "^5.15.2",
+    "mysql2": "3.24.5"
+  }
+}

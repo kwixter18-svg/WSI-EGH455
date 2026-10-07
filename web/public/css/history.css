@@ -1,0 +1,61 @@
+/*------------------------------------------------------Global------------------------------------------------------*/
+* { box-sizing: border-box; }
+html, body { width: 100%; min-height: 100%; margin: 0; padding: 0; }
+body { background-color: #eeeeee; color: #111111; font-family: Arial, Helvetica, sans-serif; }
+.page { width: 100%; min-height: 100vh; background-color: #eeeeee; }
+/*------------------------------------------------------/Global-----------------------------------------------------*/
+
+/*------------------------------------------------------Navigation------------------------------------------------------*/
+.navbar { display: flex; align-items: center; width: 100%; height: 60px; padding-left: 25px; background: linear-gradient(to bottom, #35c5ef, #bdf4ff); border-bottom: 1px solid #aaaaaa; }
+.navbar a { display: flex; align-items: center; height: 60px; padding: 0 25px; color: #111111; text-decoration: none; font-size: 16px; font-weight: bold; }
+.navbar a:hover, .navbar a.active { background-color: rgba(255, 255, 255, 0.35); }
+/*------------------------------------------------------/Navigation-----------------------------------------------------*/
+
+/*------------------------------------------------------Header------------------------------------------------------*/
+.history-header { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 25px 35px; background-color: white; border-bottom: 1px solid #bbbbbb; }
+.history-header h1 { margin: 0 0 5px 0; font-size: 24px; }
+.history-header p { margin: 0; color: #666666; font-size: 14px; }
+.entry-count { padding: 8px 14px; background-color: #f4f4f4; border: 1px solid #cccccc; border-radius: 4px; font-size: 13px; font-weight: bold; }
+/*------------------------------------------------------/Header-----------------------------------------------------*/
+
+/*------------------------------------------------------History------------------------------------------------------*/
+.history-content { width: 100%; padding: 20px; }
+.entry-list { display: flex; flex-direction: column; gap: 8px; }
+.list-header, .history-entry { display: grid; align-items: center; gap: 12px; width: 100%; min-width: 980px; padding: 12px 16px; }
+.list-header { background-color: #d8d8d8; border: 1px solid #999999; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+.history-entry { min-height: 58px; background-color: white; border: 1px solid #b5b5b5; font-size: 14px; }
+.history-entry:hover { border-color: #00aeef; }
+.telemetry-header, .telemetry-entry { grid-template-columns: 55px repeat(7, minmax(90px, 1fr)) minmax(180px, 1.5fr); }
+.log-header, .log-entry { grid-template-columns: 55px minmax(130px, 0.8fr) minmax(300px, 3fr) minmax(180px, 1.2fr); }
+.entry-id { font-size: 16px; font-weight: bold; }
+.entry-value { min-width: 0; }
+.entry-label { display: none; color: #666666; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+.entry-time { justify-self: end; text-align: right; white-space: nowrap; color: #555555; font-size: 13px; }
+.log-content { overflow-wrap: anywhere; }
+.empty-message { padding: 30px; background-color: white; border: 1px solid #bbbbbb; color: #666666; text-align: center; }
+.list-scroll { width: 100%; overflow-x: auto; }
+/*------------------------------------------------------/History-----------------------------------------------------*/
+
+/*------------------------------------------------------Responsive------------------------------------------------------*/
+@media (max-width: 900px) {
+    .navbar { height: auto; padding-left: 0; overflow-x: auto; }
+    .navbar a { flex: 0 0 auto; height: 52px; padding: 0 16px; font-size: 14px; }
+    .history-header { padding: 18px 20px; }
+    .history-content { overflow-x: auto; padding: 14px; }
+}
+/*------------------------------------------------------/Responsive-----------------------------------------------------*/
+
+/*------------------------------------------------------Detections------------------------------------------------------*/
+.detection-header, .detection-entry { grid-template-columns: 55px 140px minmax(130px, 0.8fr) minmax(300px, 2.5fr) minmax(180px, 1.2fr); }
+.detection-preview { width: 120px; height: 75px; object-fit: contain; background-color: #111111; border: 2px solid #16aee5; cursor: pointer; }
+.detection-type { font-weight: bold; }
+.detection-description { overflow-wrap: anywhere; }
+.history-image-modal { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 30px; background-color: rgba(0, 0, 0, 0.75); }
+.history-image-modal.open { display: flex; }
+.history-image-card { position: relative; width: min(900px, 95vw); max-height: 90vh; padding: 20px; overflow: auto; background-color: white; border: 3px solid #16aee5; }
+.history-image-card img { display: block; max-width: 100%; max-height: 65vh; margin: 0 auto 15px; object-fit: contain; }
+.history-image-card button { position: absolute; top: 8px; right: 10px; width: 36px; height: 36px; border: none; background-color: rgba(0, 0, 0, 0.7); color: white; font-size: 26px; cursor: pointer; }
+.history-image-card h3 { margin: 5px 0; }
+.history-image-card p { margin: 5px 0 10px; }
+.history-image-card span { color: #666666; font-size: 13px; }
+/*------------------------------------------------------/Detections-----------------------------------------------------*/

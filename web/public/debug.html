@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>debug</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/debug.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="page">
+
+
+        <!------------------------------------------------------Navigation------------------------------------------------------>
+        <nav class="navbar">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/history">
+                Data History
+            </a>
+
+            <a href="/logs">
+                Extended Logs
+            </a>
+
+            <a href="/detections">
+                Detection History
+            </a>
+
+            <a
+                class="active"
+                href="/debug"
+            >
+                Debug
+            </a>
+
+        </nav>
+        <!------------------------------------------------------/Navigation----------------------------------------------------->
+
+
+
+        <!------------------------------------------------------Header------------------------------------------------------>
+        <header class="debug-header">
+
+            <div>
+
+                <h1>
+                    GCS Debug Interface
+                </h1>
+
+                <p>
+                    Manual database input and system testing
+                </p>
+
+            </div>
+
+
+            <div
+                class="server-status"
+                id="serverStatus"
+            >
+
+                <span
+                    class="status-light"
+                    id="statusLight"
+                ></span>
+
+                <span id="statusText">
+                    Checking...
+                </span>
+
+            </div>
+
+        </header>
+        <!------------------------------------------------------/Header----------------------------------------------------->
+
+
+
+        <!------------------------------------------------------Debug_Content------------------------------------------------------>
+        <main class="debug-content">
+
+
+            <!------------------------------------------------------Telemetry------------------------------------------------------>
+            <section class="debug-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Manual Telemetry Input
+                        </h2>
+
+                        <p>
+                            Write a telemetry sample directly to the database.
+                        </p>
+
+                    </div>
+
+                    <span class="card-label">
+                        TELEMETRY
+                    </span>
+
+                </div>
+
+
+                <form
+                    id="telemetryForm"
+                    class="debug-form"
+                >
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-field">
+
+                            <label for="temp">
+                                Temperature
+                            </label>
+
+                            <div class="input-container">
+
+                                <input
+                                    id="temp"
+                                    name="temp"
+                                    type="number"
+                                    step="any"
+                                    placeholder="26"
+                                    required
+                                >
+
+                                <span class="input-unit">
+                                    °C
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="atmp">
+                                Atmospheric Pressure
+                            </label>
+
+                            <div class="input-container">
+
+                                <input
+                                    id="atmp"
+                                    name="atmp"
+                                    type="number"
+                                    step="any"
+                                    placeholder="1000"
+                                    required
+                                >
+
+                                <span class="input-unit">
+                                    hPa
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="hum">
+                                Humidity
+                            </label>
+
+                            <div class="input-container">
+
+                                <input
+                                    id="hum"
+                                    name="hum"
+                                    type="number"
+                                    step="any"
+                                    placeholder="50"
+                                    required
+                                >
+
+                                <span class="input-unit">
+                                    %
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="lux">
+                                Light Level
+                            </label>
+
+                            <div class="input-container">
+
+                                <input
+                                    id="lux"
+                                    name="lux"
+                                    type="number"
+                                    step="any"
+                                    placeholder="400"
+                                    required
+                                >
+
+                                <span class="input-unit">
+                                    lux
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="co">
+                                Carbon Monoxide
+                            </label>
+
+                            <div class="input-container">
+
+                                <input id="co" name="co" type="number" step="any" placeholder="4.47" required>
+
+                                <span class="input-unit">
+                                    ppm
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="no2">
+                                Nitrogen Dioxide
+                            </label>
+
+                            <div class="input-container">
+
+                                <input id="no2" name="no2" type="number" step="any" placeholder="0.15" required>
+
+                                <span class="input-unit">
+                                    ppm
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="nh3">
+                                Ammonia
+                            </label>
+
+                            <div class="input-container">
+
+                                <input id="nh3" name="nh3" type="number" step="any" placeholder="0.84" required>
+
+                                <span class="input-unit">
+                                    ppm
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="telemetryExampleButton"
+                        >
+                            Load Example
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                        >
+                            Clear
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="telemetrySubmitButton"
+                        >
+                            Write Telemetry
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="response-message"
+                        id="telemetryResponse"
+                    ></div>
+
+
+                </form>
+
+            </section>
+            <!------------------------------------------------------/Telemetry----------------------------------------------------->
+
+
+
+            <!------------------------------------------------------Logs------------------------------------------------------>
+            <section class="debug-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Manual Log Input
+                        </h2>
+
+                        <p>
+                            Write a system operation log directly to the database.
+                        </p>
+
+                    </div>
+
+                    <span class="card-label">
+                        LOG
+                    </span>
+
+                </div>
+
+
+                <form
+                    id="logForm"
+                    class="debug-form"
+                >
+
+
+                    <div class="form-field">
+
+                        <label for="actionType">
+                            Action Type
+                        </label>
+
+                        <input
+                            id="actionType"
+                            name="actionType"
+                            type="text"
+                            placeholder="NAVIGATION"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="logContent">
+                            Log Description
+                        </label>
+
+                        <textarea
+                            id="logContent"
+                            name="logContent"
+                            rows="6"
+                            placeholder="Moving UAV to next position..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="logExampleButton"
+                        >
+                            Load Example
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                        >
+                            Clear
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="logSubmitButton"
+                        >
+                            Write Log
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="response-message"
+                        id="logResponse"
+                    ></div>
+
+
+                </form>
+
+            </section>
+            <!------------------------------------------------------/Logs----------------------------------------------------->
+
+
+        </main>
+        <!------------------------------------------------------/Debug_Content----------------------------------------------------->
+
+
+    </div>
+
+
+    <script src="/js/debug.js"></script>
+
+</body>
+
+</html>

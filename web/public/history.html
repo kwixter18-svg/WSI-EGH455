@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data History</title>
+    <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+<div class="page">
+    <!------------------------------------------------------Navigation------------------------------------------------------>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a class="active" href="/history">Data History</a>
+        <a href="/logs">Extended Logs</a>
+        <a href="/detections">Detection History</a>
+        <a href="/debug">Debug</a>
+    </nav>
+    <!------------------------------------------------------/Navigation----------------------------------------------------->
+
+    <!------------------------------------------------------Header------------------------------------------------------>
+    <header class="history-header">
+        <div>
+            <h1>Data History</h1>
+            <p>Complete telemetry database history</p>
+        </div>
+        <div class="entry-count" id="entryCount">Loading...</div>
+    </header>
+    <!------------------------------------------------------/Header----------------------------------------------------->
+
+    <!------------------------------------------------------Content------------------------------------------------------>
+    <main class="history-content">
+        <div class="list-header telemetry-header">
+            <span>ID</span>
+            <span>Temperature</span>
+            <span>Pressure</span>
+            <span>Humidity</span>
+            <span>Light</span>
+            <span>CO</span>
+            <span>NO₂</span>
+            <span>NH₃</span>
+            <span>Timestamp</span>
+        </div>
+        <div class="entry-list" id="historyList">
+            <div class="empty-message">Loading telemetry...</div>
+        </div>
+    </main>
+    <!------------------------------------------------------/Content----------------------------------------------------->
+</div>
+<script src="/js/history.js"></script>
+</body>
+</html>

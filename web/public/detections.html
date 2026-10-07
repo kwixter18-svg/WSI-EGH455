@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection History</title>
+    <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+<div class="page">
+    <!------------------------------------------------------Navigation------------------------------------------------------>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/history">Data History</a>
+        <a href="/logs">Extended Logs</a>
+        <a class="active" href="/detections">Detection History</a>
+        <a href="/debug">Debug</a>
+    </nav>
+    <!------------------------------------------------------/Navigation----------------------------------------------------->
+
+    <!------------------------------------------------------Header------------------------------------------------------>
+    <header class="history-header">
+        <div>
+            <h1>Detection History</h1>
+            <p>Complete detection image database history</p>
+        </div>
+        <div class="entry-count" id="entryCount">Loading...</div>
+    </header>
+    <!------------------------------------------------------/Header----------------------------------------------------->
+
+    <!------------------------------------------------------Content------------------------------------------------------>
+    <main class="history-content">
+        <div class="list-header detection-header">
+            <span>ID</span>
+            <span>Image</span>
+            <span>Type</span>
+            <span>Description</span>
+            <span>Timestamp</span>
+        </div>
+        <div class="entry-list" id="detectionList">
+            <div class="empty-message">Loading detections...</div>
+        </div>
+    </main>
+    <!------------------------------------------------------/Content----------------------------------------------------->
+</div>
+
+<div class="history-image-modal" id="imageModal">
+    <div class="history-image-card">
+        <button id="imageModalClose">×</button>
+        <img id="imageModalImage" alt="Detection image">
+        <h3 id="imageModalType"></h3>
+        <p id="imageModalDescription"></p>
+        <span id="imageModalTime"></span>
+    </div>
+</div>
+<script src="/js/detections.js"></script>
+</body>
+</html>

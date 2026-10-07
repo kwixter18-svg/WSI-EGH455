@@ -1,0 +1,17 @@
+node_modules/
+.env
+
+# MQTT runtime data/logs
+mqtt/data/
+mqtt/log/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS/editor
+.DS_Store
+.vscode/
+
+# Misc
+*.log

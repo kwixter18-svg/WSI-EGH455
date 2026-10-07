@@ -1,0 +1,883 @@
+/*------------------------------------------------------Global------------------------------------------------------*/
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    overflow: hidden;
+
+    background-color: #eeeeee;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #111111;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+.page {
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+
+    background-color: white;
+}
+
+
+/*------------------------------------------------------/Global-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Navigation------------------------------------------------------*/
+
+.navbar {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+    height: 60px;
+
+    padding-left: 25px;
+
+    background: linear-gradient(
+        to bottom,
+        #35c5ef,
+        #bdf4ff
+    );
+
+    border-bottom: 1px solid #aaaaaa;
+}
+
+
+.navbar a {
+    display: flex;
+
+    align-items: center;
+
+    height: 60px;
+
+    padding: 0 25px;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+
+.navbar a.active {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/*------------------------------------------------------/Navigation-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Dashboard------------------------------------------------------*/
+
+.dashboard {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(400px, 1fr);
+
+    gap: 12px;
+
+    width: 100%;
+    height: calc(100vh - 60px);
+
+    padding: 12px;
+}
+
+
+/*------------------------------------------------------/Dashboard-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Left_Panel------------------------------------------------------*/
+
+.left-panel {
+    display: grid;
+
+    grid-template-rows:
+        minmax(0, 1fr)
+        110px;
+
+    gap: 8px;
+
+    min-width: 0;
+    min-height: 0;
+}
+
+
+/*------------------------------------------------------/Left_Panel-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Camera------------------------------------------------------*/
+
+.camera-container {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 0;
+
+    border: 1px solid #999999;
+}
+
+
+.camera-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    height: 32px;
+
+    padding: 0 10px;
+
+    background-color: #999999;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.status {
+    color: #ff7900;
+}
+
+
+.camera-feed {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 0;
+
+    background-color: black;
+}
+
+
+.camera-stream {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background-color: black;
+}
+
+
+.camera-placeholder {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: #00aeef;
+}
+
+
+.camera-icon {
+    margin-bottom: 10px;
+
+    font-size: 48px;
+}
+
+
+.camera-placeholder span {
+    color: #999999;
+
+    font-size: 14px;
+}
+
+
+/*------------------------------------------------------/Camera-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Images------------------------------------------------------*/
+
+.image-strip {
+    display: flex;
+
+    gap: 8px;
+
+    width: 100%;
+    height: 110px;
+
+    min-width: 0;
+
+    overflow: hidden;
+}
+
+
+.image-thumbnail {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+
+    min-width: 90px;
+
+    background-color: white;
+
+    border: 3px solid #16aee5;
+
+    color: #16aee5;
+
+    font-size: 42px;
+
+    cursor: pointer;
+}
+
+
+.image-thumbnail:hover {
+    background-color: #e8f9ff;
+}
+
+
+.image-scroll {
+    width: 38px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    background-color: #bbbbbb;
+
+    color: #111111;
+
+    font-size: 35px;
+
+    cursor: pointer;
+}
+
+
+.image-scroll:hover {
+    background-color: #999999;
+}
+
+
+/*------------------------------------------------------/Images-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Right_Panel------------------------------------------------------*/
+
+.right-panel {
+    display: grid;
+
+    grid-template-rows:
+        250px
+        minmax(0, 1fr)
+        40px
+        140px;
+
+    gap: 8px;
+
+    min-width: 0;
+    min-height: 0;
+}
+
+
+/*------------------------------------------------------/Right_Panel-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Telemetry------------------------------------------------------*/
+
+.telemetry-panel {
+    display: grid;
+
+    grid-template-columns:
+        minmax(210px, 0.9fr)
+        minmax(190px, 1.1fr);
+
+    align-items: center;
+
+    gap: 20px;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 15px 20px;
+
+    border: 1px solid #999999;
+
+    background-color: white;
+}
+
+
+/*------------------------------------------------------Sensor_Wheel------------------------------------------------------*/
+
+.sensor-wheel {
+    position: relative;
+
+    width: 230px;
+    height: 230px;
+
+    justify-self: center;
+
+    flex-shrink: 0;
+
+    border: 2px solid #777777;
+
+    border-radius: 50%;
+
+    background-color: #fafafa;
+}
+
+
+.sensor-wheel::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 128px;
+    height: 128px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid #dddddd;
+
+    border-radius: 50%;
+
+    opacity: 0%;
+}
+
+
+.sensor-button {
+    position: absolute;
+
+    z-index: 2;
+
+    min-width: 58px;
+
+    padding: 7px 8px;
+
+    border: 1px solid transparent;
+
+    border-radius: 12px;
+
+    background-color: transparent;
+
+    color: #222222;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s,
+        border-color 0.15s,
+        color 0.15s,
+        transform 0.15s;
+}
+
+
+.sensor-button:hover {
+    border-color: #00aeef;
+
+    background-color: #e9faff;
+}
+
+
+/* Temperature - 12 o'clock */
+.sensor-temp {
+    top: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+
+/* Atmospheric pressure - upper right */
+.sensor-atmp {
+    top: 65px;
+    right: 12px;
+}
+
+
+/* Humidity - lower right */
+.sensor-hum {
+    bottom: 36px;
+    right: 29px;  
+}
+
+
+/* Lux - lower left */
+.sensor-lux {
+    bottom: 36px;
+    left: 29px;
+}
+
+
+/* Gas - upper left */
+.sensor-gas {
+    top: 65px;
+    left: 12px;
+}
+
+
+.sensor-button.active {
+    border-color: #00aeef;
+
+    background-color: #00aeef;
+
+    color: white;
+}
+
+
+.sensor-temp.active {
+    transform: translateX(-50%) scale(1.06);
+}
+
+
+.sensor-centre {
+    position: absolute;
+
+    z-index: 3;
+
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 94px;
+    height: 94px;
+
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    border: 2px solid #555555;
+
+    border-radius: 50%;
+}
+
+
+.sensor-centre-name {
+    margin-bottom: 3px;
+
+    color: #666666;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.sensor-centre-value {
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/*------------------------------------------------------/Sensor_Wheel-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Sensor_Values------------------------------------------------------*/
+
+.sensor-values {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    width: 100%;
+
+    min-width: 0;
+}
+
+
+.sensor-reading {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    width: 100%;
+
+    padding: 5px 7px;
+
+    border: 1px solid transparent;
+
+    border-radius: 4px;
+
+    background-color: transparent;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s,
+        border-color 0.15s;
+}
+
+
+.sensor-reading:hover {
+    border-color: #b5eaff;
+
+    background-color: #f1fbff;
+}
+
+
+.sensor-reading.active {
+    border-color: #00aeef;
+
+    background-color: #e9faff;
+}
+
+
+.sensor-reading-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    font-size: 12px;
+}
+
+
+.sensor-reading-header strong {
+    white-space: nowrap;
+}
+
+
+.sensor-reading-header > span {
+    color: #555555;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.sensor-bar {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+
+    background-color: #e5e5e5;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 4px;
+}
+
+
+.sensor-bar-fill {
+    display: block;
+
+    width: 0%;
+    height: 100%;
+
+    background-color: #00aeef;
+
+    border-radius: 4px;
+
+    transition: width 0.3s ease;
+}
+
+
+/*------------------------------------------------------/Sensor_Values-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Graph------------------------------------------------------*/
+
+.graph-panel {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 8px;
+
+    border: 1px solid #999999;
+
+    background-color: white;
+}
+
+
+.graph-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    height: 25px;
+
+    padding: 0 5px;
+
+    border-bottom: 1px solid #dddddd;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.graph-container {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 0;
+}
+
+
+#telemetryGraph {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+.graph-controls {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 6px;
+
+    min-width: 0;
+}
+
+
+.range-button {
+    border: 1px solid #777777;
+
+    background-color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.range-button:hover {
+    background-color: #eeeeee;
+}
+
+
+.range-button.active {
+    border: 2px solid #00aeef;
+
+    background-color: #e9faff;
+}
+
+
+/*------------------------------------------------------/Graph-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Logs------------------------------------------------------*/
+
+.log-panel {
+    min-width: 0;
+    min-height: 0;
+
+    padding: 8px;
+
+    overflow-y: auto;
+
+    border: 1px solid #777777;
+
+    background-color: #fafafa;
+
+    font-family: Consolas, monospace;
+
+    font-size: 12px;
+}
+
+
+.log-entry {
+    margin-bottom: 5px;
+}
+
+
+/*------------------------------------------------------/Logs-----------------------------------------------------*/
+
+
+
+/*------------------------------------------------------Responsive------------------------------------------------------*/
+
+@media (max-width: 1000px) {
+
+    body {
+        overflow: auto;
+    }
+
+
+    .page {
+        width: 100%;
+        height: auto;
+
+        min-height: 100vh;
+    }
+
+
+    .navbar {
+        overflow-x: auto;
+    }
+
+
+    .navbar a {
+        white-space: nowrap;
+    }
+
+
+    .dashboard {
+        grid-template-columns: 1fr;
+
+        height: auto;
+    }
+
+
+    .left-panel {
+        grid-template-rows:
+            500px
+            110px;
+    }
+
+
+    .right-panel {
+        grid-template-rows:
+            250px
+            400px
+            40px
+            140px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .telemetry-panel {
+        grid-template-columns: 1fr;
+
+        overflow-y: auto;
+    }
+
+
+    .right-panel {
+        grid-template-rows:
+            500px
+            400px
+            40px
+            140px;
+    }
+
+}
+
+
+/*------------------------------------------------------/Responsive-----------------------------------------------------*/
+
+/*------------------------------------------------------Gas_Values------------------------------------------------------*/
+.gas-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    color: #555555;
+    font-size: 10px;
+}
+
+.gas-values span {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.gas-values strong {
+    color: #222222;
+    white-space: nowrap;
+}
+/*------------------------------------------------------/Gas_Values-----------------------------------------------------*/
+
+
+/*------------------------------------------------------Detection_Images------------------------------------------------------*/
+.detection-thumbnails { display: flex; gap: 8px; flex: 1; min-width: 0; height: 110px; }
+.image-thumbnail { position: relative; overflow: hidden; padding: 0; }
+.image-thumbnail img { width: 100%; height: 100%; object-fit: contain; background-color: #111111; }
+.image-thumbnail-label { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 6px; background-color: rgba(0, 0, 0, 0.72); color: white; font-size: 11px; text-align: center; }
+.detection-empty { display: flex; align-items: center; justify-content: center; flex: 1; border: 2px dashed #aaaaaa; color: #777777; font-size: 13px; }
+.detection-modal { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 30px; background-color: rgba(0, 0, 0, 0.75); }
+.detection-modal.open { display: flex; }
+.detection-modal-card { position: relative; width: min(900px, 95vw); max-height: 90vh; padding: 20px; overflow: auto; background-color: white; border: 3px solid #16aee5; }
+.detection-modal-card img { display: block; max-width: 100%; max-height: 65vh; margin: 0 auto 15px; object-fit: contain; }
+.detection-modal-card h3 { margin: 5px 0; }
+.detection-modal-card p { margin: 5px 0 10px; }
+.detection-modal-card span { color: #666666; font-size: 13px; }
+.detection-modal-close { position: absolute; top: 8px; right: 10px; z-index: 2; width: 36px; height: 36px; border: none; background-color: rgba(0, 0, 0, 0.7); color: white; font-size: 26px; cursor: pointer; }
+/*------------------------------------------------------/Detection_Images-----------------------------------------------------*/
