@@ -1369,6 +1369,8 @@ function selectSensor(sensor) {
     selectedSensor =
         sensor;
 
+    publishDisplayMode(sensor);
+
 
     // Update wheel buttons
     sensorButtons.forEach(
@@ -1678,6 +1680,24 @@ function calculateBarPercentage(
 
     return percentage;
 
+}
+
+
+// Publish selected sensor mode to Raspberry Pi LCD
+async function publishDisplayMode(mode) {
+    try {
+        const response = await fetch("/api/display/mode", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ mode })
+        });
+
+        if (!response.ok) throw new Error("Failed to publish LCD mode");
+        console.log(`LCD mode requested: ${mode}`);
+    }
+    catch (error) {
+        console.error("LCD mode request failed:", error);
+    }
 }
 
 /*------------------------------------------------------/Helper_Functions-----------------------------------------------------*/

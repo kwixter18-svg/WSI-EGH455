@@ -1,5 +1,5 @@
 {
-    "name": "minecraft-server-manager",
+    "name": "webserver-manager",
     "version": "1.0.0",
     "type": "module",
     "scripts": {
@@ -7,6 +7,7 @@
     },
     "dependencies": {
         "express": "^5.1.0",
-        "ws": "8.22.0"
+        "ws": "8.22.0",
+        "mqtt": "^5.15.2"
     }
 }

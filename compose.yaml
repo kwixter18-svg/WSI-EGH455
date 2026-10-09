@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: web/Dockerfile
     container_name: web-server
+    environment:
+      TZ: Australia/Brisbane
     ports:
       - "3000:3000"
     volumes:
@@ -15,6 +17,8 @@ services:
       context: .
       dockerfile: gcs/Dockerfile
     container_name: database-handler
+    environment:
+      TZ: Australia/Brisbane
     ports:
       - "3001:3001"
     depends_on:
@@ -39,10 +43,12 @@ services:
       timeout: 5s
       retries: 10
       start_period: 10s
-  
+
   mqtt:
     image: eclipse-mosquitto:2
     container_name: mqtt-broker
+    environment:
+      TZ: Australia/Brisbane
     ports:
       - "1883:1883"
     volumes:
@@ -50,29 +56,23 @@ services:
       - ./mqtt/data:/mosquitto/data
       - ./mqtt/log:/mosquitto/log
 
-  video:
-    build:
-      context: .
-      dockerfile: video/Dockerfile
-    container_name: video-handler
-    environment:
-      VIDEO_SOURCE: ${VIDEO_SOURCE:-/video/test-video.mp4}
-      VIDEO_PORT: 8000
-    ports:
-      - "8000:8000"
-    restart: unless-stopped
-
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
+    environment:
+      TZ: Australia/Brisbane
+      VIDEO_HOST: ${VIDEO_HOST}
+      VIDEO_PORT: ${VIDEO_PORT}
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx
+      NGINX_ENVSUBST_TEMPLATE_SUFFIX: .template
+      NGINX_ENVSUBST_FILTER: "^(VIDEO_HOST|VIDEO_PORT)$"
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
     depends_on:
       - web
       - gcs
-      - video
     restart: unless-stopped
 
 volumes:

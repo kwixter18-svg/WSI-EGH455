@@ -27,7 +27,7 @@ export function connectMQTT(host = "mqtt", port = 1883) {
     return client;
 }
 
-export function publishMQTT(topic, data) {
+export function publishMQTT(topic, data, options = {}) {
 
     if (!client) {
         throw new Error("MQTT client has not been connected");
@@ -35,7 +35,7 @@ export function publishMQTT(topic, data) {
 
     const message = typeof data === "string" ? data : JSON.stringify(data);
 
-    client.publish(topic, message);
+    client.publish(topic, message, options);
 }
 
 

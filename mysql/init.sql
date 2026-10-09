@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS telemetry (
 
 CREATE TABLE IF NOT EXISTS drone_log (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    action_type VARCHAR(16),
-    log_content VARCHAR(100),
+    action_type VARCHAR(255),
+    log_content VARCHAR(255),
     time_logged TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

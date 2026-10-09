@@ -153,6 +153,7 @@ databaseRouter_API.get("/logs/all", async (req, res) => {
 databaseRouter_API.get("/detections", async (req, res) => {
     try {
         const data = await getDetections(req.query.limit ?? 6);
+        res.setHeader("Cache-Control", "no-store");
         return res.json({ success: true, count: data.length, data: data });
     }
     catch (error) {
@@ -185,7 +186,7 @@ databaseRouter_API.get("/detections/:id/image", async (req, res) => {
         if (!detection) return res.status(404).send("Detection image not found");
 
         res.set("Content-Type", detection.image_mime || "image/jpeg");
-        res.set("Cache-Control", "public, max-age=3600");
+        res.setHeader("Cache-Control", "no-store");
         return res.send(detection.image);
     }
     catch (error) {

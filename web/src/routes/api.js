@@ -1,6 +1,8 @@
 /*------------------------------------------------------Imports------------------------------------------------------*/
 // Standard
 import express from "express";
+
+import { publishMQTT } from "../../../common/mqttHandler.js";
 /*------------------------------------------------------/Imports-----------------------------------------------------*/
 
 
@@ -225,6 +227,7 @@ webRouter_API.get("/detections", async (req, res) => {
         const limit = req.query.limit ?? 6;
         const response = await fetch(`${databaseServer}/api/detections?limit=${encodeURIComponent(limit)}`);
         const data = await response.json();
+        res.setHeader("Cache-Control", "no-store");
         return res.status(response.status).json(data);
     }
     catch (error) {
@@ -253,7 +256,7 @@ webRouter_API.get("/detections/:id/image", async (req, res) => {
         if (!response.ok) return res.status(response.status).send(await response.text());
 
         res.set("Content-Type", response.headers.get("content-type") || "image/jpeg");
-        res.set("Cache-Control", "public, max-age=3600");
+        res.setHeader("Cache-Control", "no-store");
         const image = Buffer.from(await response.arrayBuffer());
         return res.send(image);
     }
@@ -418,6 +421,26 @@ webRouter_API.post("/debug/log", async (req, res) => {
 
 /*------------------------------------------------------/Debug_Log-----------------------------------------------------*/
 
+
+/*------------------------------------------------------LCD_Control------------------------------------------------------*/
+webRouter_API.post("/display/mode", (req, res) => {
+    try {
+        const { mode } = req.body;
+        const validModes = ["temp", "atmp", "hum", "lux", "gas"];
+
+        if (!validModes.includes(mode)) {
+            return res.status(400).json({ success: false, error: "Invalid LCD mode" });
+        }
+
+        publishMQTT("gcs/aq/display/set", { mode }, { qos: 1, retain: true });
+        return res.json({ success: true, mode });
+    }
+    catch (error) {
+        console.error("LCD mode publish failed:", error);
+        return res.status(500).json({ success: false, error: "Failed to publish LCD mode" });
+    }
+});
+/*------------------------------------------------------/LCD_Control-----------------------------------------------------*/
 
 /*------------------------------------------------------Helper_Functions------------------------------------------------------*/
 

@@ -11,7 +11,7 @@ function formatTime(time) {
 }
 
 function openDetection(row) {
-    document.getElementById("imageModalImage").src = `/api/detections/${detection.id}/image?v=${encodeURIComponent(detection.time_logged)}`;
+    document.getElementById("imageModalImage").src = `/api/detections/${row.id}/image?v=${encodeURIComponent(row.time_logged)}`;
     document.getElementById("imageModalType").textContent = row.image_type;
     document.getElementById("imageModalDescription").textContent = row.description;
     document.getElementById("imageModalTime").textContent = formatTime(row.time_logged);
@@ -28,7 +28,7 @@ function createDetectionEntry(row) {
 
     const image = document.createElement("img");
     image.className = "detection-preview";
-    image.src = `/api/detections/${detection.id}/image?v=${encodeURIComponent(detection.time_logged)}`;
+    image.src = `/api/detections/${row.id}/image?v=${encodeURIComponent(row.time_logged)}`;
     image.alt = row.image_type;
     image.addEventListener("click", () => openDetection(row));
 

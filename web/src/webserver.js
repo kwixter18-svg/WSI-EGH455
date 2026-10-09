@@ -12,6 +12,7 @@ import webRouter_API, { setBroadcastFunction } from "./routes/api.js";
 
 // Common import
 import { webPORT } from "../../common/config.js";
+import { connectMQTT } from "../../common/mqttHandler.js";
 /*------------------------------------------------------/Imports-----------------------------------------------------*/
 
 
@@ -161,6 +162,9 @@ setBroadcastFunction(broadcast);
 
 
 /*------------------------------------------------------Deploy------------------------------------------------------*/
+// Connect to mqtt
+connectMQTT();
+
 // Host and expose server port
 server.listen(PORT, () => {
     console.log(`Server Manager running on port ${PORT}: http://localhost:${PORT}/`);
