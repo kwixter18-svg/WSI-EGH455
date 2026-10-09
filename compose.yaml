@@ -1,6 +1,7 @@
 services:
 
   web:
+    image: kwixter/egh355-web:latest
     build:
       context: .
       dockerfile: web/Dockerfile
@@ -13,6 +14,7 @@ services:
       - ./web/public:/server/web/public
 
   gcs:
+    image: kwixter/egh355-gcs:latest
     build:
       context: .
       dockerfile: gcs/Dockerfile
